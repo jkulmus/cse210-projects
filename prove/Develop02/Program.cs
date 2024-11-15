@@ -15,7 +15,7 @@ class Program
             while (true)
             {
                 await Task.Delay(TimeSpan.FromHours(24)); // Daily reminder
-                Console.WriteLine("Its time to journal!"); // journaling prompt
+                Console.WriteLine("History in the making! It's journal time :)"); // journaling prompt
             }
           });
 
