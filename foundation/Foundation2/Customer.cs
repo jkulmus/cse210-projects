@@ -1,8 +1,5 @@
 using System;
-using System.Net.Sockets;
-using System.Reflection;
-
-public class Customer
+class Customer
 {
     private string _name;
     private Address _address;

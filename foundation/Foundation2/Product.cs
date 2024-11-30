@@ -1,6 +1,6 @@
 using System;
 
-public class Product
+class Product
 {
     private string _name;
     private string _productId;
@@ -23,5 +23,10 @@ public class Product
     public decimal GetTotalCost()
     {
         return _price * _quantity;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name} (ID: {ProductId}) - {Price:C} * {Quantity}";
     }
 }
