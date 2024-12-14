@@ -1,5 +1,6 @@
 using System;
-using System.Runtime.CompilerServices;
+using System.IO.Compression;
+
 public class GoalManager
 {
     private List<Goal> _goals;
@@ -9,6 +10,9 @@ public class GoalManager
     {
         _goals = new List<Goal>();
         _score = 0;
+    }
+    public void Start()
+    {
     }
     // Add goal to list
     public void AddGoal(Goal goal)
@@ -65,8 +69,8 @@ public class GoalManager
             }
             else if (parts[0] == "ChecklistGoal")
             {
-                var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]));
-                _goals.Add(goal);
+                var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
+                 _goals.Add(goal);
             }
         }
     }

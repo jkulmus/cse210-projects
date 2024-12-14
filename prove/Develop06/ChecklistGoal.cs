@@ -1,3 +1,4 @@
+using System;
 public class ChecklistGoal : Goal
 {
     private int _amountCompleted;
@@ -14,6 +15,11 @@ public class ChecklistGoal : Goal
     public override void RecordEvent()
     {
         _amountCompleted++;
+        if (_amountCompleted >= _target)
+        {
+            Console.WriteLine($"Congrats!!! You completed your goal and earned {_bonus} points!");
+            _points += _bonus;
+        }
     }
     public override bool IsComplete()
     {
@@ -21,7 +27,7 @@ public class ChecklistGoal : Goal
     }
     public override string GetDetailsString()
     {
-        return $"{base.GetDetailsString()}, Completed {_amountCompleted}/{_target}, {_bonus}";
+        return $"{base.GetDetailsString()}, Completed {_amountCompleted}/{_target} times";
     }
     public override string GetStringRepresentation()
     {
