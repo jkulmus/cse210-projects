@@ -12,25 +12,37 @@ public class GoalManager
         _score = 0;
     }
     public void Start()
-    {
+    { // implement main logic
+        DisplayPlayerInfo();
+        ListGoalDetails();
     }
-    // Add goal to list
-    public void AddGoal(Goal goal)
+    public void DisplayPlayerInfo()
     {
-        _goals.Add(goal);
+        Console.WriteLine($"Current Score: {_score}");
+    }
+    public void ListGoalNames()
+    {
+        foreach (var goal in _goals)
+        {
+            Console.WriteLine(goal.GetDetailsString());
+        }
     }
 
     // Display goals
-    public void DisplayGoals()
+    public void ListGoalDetails()
     {
         foreach (var goal in _goals)
         {
             string completionStatus = goal.IsComplete() ? "[X]" : "[ ]";
-            Console.WriteLine($"{completionStatus} {goal.GetStringRepresentation()}");
+            Console.WriteLine($"goal.GetStringRepresentation()");
         }
     }
+    public void CreateGoal(Goal goal)
+    {
+        _goals.Add(goal);
+    }
     // Record event for a specific goal by name
-    public void RecordGoal(string goalName)
+    public void RecordEvent(string goalName)
     {
         Goal goal = _goals.FirstOrDefault(g => g.ShortName == goalName);
         if (goal != null)

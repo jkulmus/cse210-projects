@@ -1,13 +1,16 @@
-using System;
-
 public abstract class Goal
 {
-    protected string _shortName;
-    protected string _description;
-    protected int _points;
+    private string _shortName;
+    private string _description;
+    private int _points;
 
     public string ShortName => _shortName;
-    public int Points => _points;
+    public string Description => _description;
+    public int Points
+    {
+        get => _points;
+        protected set => _points = value; // allows derived class to modify points
+    }
 
     public Goal(string shortName, string description, int points)
     {

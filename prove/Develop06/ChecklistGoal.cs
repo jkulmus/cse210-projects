@@ -1,5 +1,3 @@
-using System;
-
 public class ChecklistGoal : Goal
 {
     private int _amountCompleted;
@@ -18,8 +16,8 @@ public class ChecklistGoal : Goal
         _amountCompleted++;
         if (_amountCompleted >= _target)
         {
-            Console.WriteLine($"Congrats!!! You completed your goal and earned {_bonus} points!");
-            _points += _bonus;
+            Points += _bonus; // add bonus points when goal is complete
+            Console.WriteLine($"Congrats!!! You completed your goal and earned {_bonus} bonus points!");
         }
     }
     public override bool IsComplete()
@@ -32,6 +30,6 @@ public class ChecklistGoal : Goal
     }
     public override string GetStringRepresentation()
     {
-        return $"ChecklistGoal:{_shortName}, {_description}, {_points}, {_amountCompleted}, {_target}, {_bonus}";
+        return $"ChecklistGoal:{ShortName}, {Description}, {Points}, {_amountCompleted}, {_target}, {_bonus}";
     }
 }
