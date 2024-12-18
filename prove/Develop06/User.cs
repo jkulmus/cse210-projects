@@ -13,7 +13,9 @@ public class User
     public User(string name)
     {
         _name = name;
+        _level = 1;
         _goals = new List<Goal>();
+        _badges = new List<string>();
     }
 
     public void AddGoal(Goal goal)
@@ -21,8 +23,26 @@ public class User
         _goals.Add(goal);
     }
 
+    public void AddBadge(string badge)
+    {
+        if (!_badges.Contains(badge))
+        {
+            _badges.Add(badge);
+            Console.WriteLine($"New Badge Earned: {badge}");
+        }
+    }
+    public void CalculateLevel(int totalPoints)
+    {
+        _level = totalPoints / 1000 + 1; // level up for every 1000 points
+    }
+
     public void LoadData(string filename)
     {
+        if (!File.Exists(filename))
+        {
+            Console.WriteLine($"File {filename} not found.");
+            return;
+        }
         string[] lines = File.ReadAllLines(filename);
         foreach (var line in lines)
         {
@@ -56,6 +76,7 @@ public class User
     }
     public void DisplayUserInfo()
     {
-        Console.WriteLine($"User: {_name}");
+        Console.WriteLine($"User: {_name}, Level: {_level}");
+        Console.WriteLine("Badges Earned: " + string.Join(", ", _badges));
     }
 }

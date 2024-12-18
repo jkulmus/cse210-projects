@@ -11,6 +11,10 @@ public class GoalManager
         _goals = new List<Goal>();
         _score = 0;
     }
+    public int TotalPoints()
+    {
+        return _goals.Sum(goal => goal.Points);
+    }
     public void Start()
     { // implement main logic
         DisplayPlayerInfo();
